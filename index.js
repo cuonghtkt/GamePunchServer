@@ -57,7 +57,7 @@ io.sockets.on('connection', (socket) => {
                     item.status.hpNow = 0;
                 }
                 io.emit('loseHp', data[0] + "|" + ((player.status.hpNow / player.status.hp) * 10));
-                if (player.status.hp <= 0) {
+                if (player.status.hpNow <= 0) {
                     item.new();
                 }
             }
