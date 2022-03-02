@@ -31,9 +31,11 @@ class Vector2 {
 class Status {
     constructor(hp = 10) {
         this.hp = hp;
+        this.hpNow = hp;
     }
 
     toString() {
         return this.hp;
+        return this.hpNow;
     }
 }

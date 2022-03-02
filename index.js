@@ -50,15 +50,13 @@ io.sockets.on('connection', (socket) => {
     });
     socket.on('loseHp', function(dataGet) {
         const data = dataGet.split('|');
-        var hp = 0;
         lsPlayer.forEach(function(item, index, array) {
             if (item.id == data[0]) {
-                item.status.hp -= data[1];
-                hp = item.status.hp;
-                if (hp <= 0) {
-                    hp = 0;
+                item.status.hpNow -= data[1];
+                if (item.status.hpNow <= 0) {
+                    item.status.hpNow = 0;
                 }
-                io.emit('loseHp', data[0] + "|" + hp);
+                io.emit('loseHp', data[0] + "|" + ((player.status.hpNow / player.status.hp) * 10));
                 if (hp <= 0) {
                     item.new();
                 }
